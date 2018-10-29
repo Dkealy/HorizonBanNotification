@@ -1,58 +1,107 @@
 <!DOCTYPE html>
- <html>
-    <head>
-        <title>SourceBans Notification Website</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-        body {background-color: lightgray}
+<html lang="en">
+<head>
+<title>SourceBans Notifier</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        /* styling for the header */
-        header {
-            background-color: #666;
-            padding: 30px;
-            text-align: center;
-            font-size: 26px;
-            color: white;
-        }
-        /* styling for table */
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 15px;
-            text-align: center;
-        }
-        /* Create two columns/boxes that floats next to each other */
-        nav {
-            float: left;
-            width: 30%;
-            height: 300px; /* only for demonstration, should be removed */
-            background: #ccc;
-            padding: 20px;
-        }
-        div {
-            text-align: left;
-            padding:15px;
-            font-size: 26px;
-            color: #222;
-            background: #777;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        iframe {
-            padding: 0px;
-            height: 300px;
-            width: 100%;
-        }
-        </style>
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 30px;
+    text-align: center;
+    font-size: 26px;
+    color: white;
+    border: 2px solid black;
+}
+#ban {
+    text-align: center;
+    padding:15px;
+    width:100%;
+    font-size: 26px;
+    color: #f4f4f4;
+    background: #0db2e0;
+    border-right: 1px solid black;
+    border-left: 2px solid black;
+}
+
+#mute {
+    text-align: center;
+    padding:15px;
+    width:100%;
+    font-size: 26px;
+    color: #f4f4f4;
+    background: #c91818;
+    border-right: 2px solid black;
+    border-left: 1px solid black;
+}
+
+
+iframe {
+    height: 300px;
+    width: 100%;
+}
+
+/* Create two columns/boxes that floats next to each other */
+ article{
+    float: left;
+    width: 50%;
+}
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    article {
+        width: 200%;
+        height: auto;
+    }
+}
+#bList {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 1px solid black;
+    border-left: 2px solid black;
+}
+#mList {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    border-left: 1px solid black;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
     </head>
     <body>
         <header>
             <h1>SourceBans Notifier</h1>
         </header>
-        <div>Ban List</div>
-        <iframe src="https://sb.horizonservers.net/index.php?p=banlist"></iframe>
+        <section>
+            <article>
+                <div id="ban">Ban List</div>
+                <iframe id="bList"src="https://sb.horizonservers.net/index.php?p=banlist"></iframe>
+            </article>
+
+            <article>
+                <div id="mute">Mute List</div>
+                <iframe id="mList"src="https://sb.horizonservers.net/index.php?p=commslist"></iframe>
+            </article>
+        </section>
         <table>
             <tr>
                 <th>Task Number</th>
